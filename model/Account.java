@@ -2,39 +2,39 @@ public class Account {
 
     private int balance;
 
-    public Account(int amt){
-        this.balance = amt;
+    public Account(int balance) {
+        this.balance = balance;
     }
 
-    public Account(Account acc){
+    public Account(Account acc) {
         this.balance = acc.balance();
     }
 
-    public void deposit(int amt){
-        this.balance += amt;
+    public void deposit(int balance) {
+        this.balance += balance;
     }
 
-    private boolean checkSufficientFunds(int amt){
-        if (this.balance >= amt)
+    private boolean checkSufficientFunds(int balance) {
+        if (this.balance >= balance)
             return true;
         else
             return false;
     }
 
-    public int balance(){
+    public int balance() {
         return this.balance;
     }
 
-    public void withdraw(int amt) throws InsufficientFundsException{
-        if (checkSufficientFunds(amt))
-            this.balance -= amt;
+    public void withdraw(int balance) throws InsufficientFundsException {
+        if (checkSufficientFunds(balance))
+            this.balance -= balance;
         else
             throw new InsufficientFundsException("Insufficiente funds.");
     }
 
-    public void transfer(int amt, Account acc) throws InsufficientFundsException{
-        acc.withdraw(amt);
-        deposit(amt);
+    public void transfer(int balance, Account acc) throws InsufficientFundsException {
+        acc.withdraw(balance);
+        deposit(balance);
     }
 
 }
